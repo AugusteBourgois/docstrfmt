@@ -13,6 +13,9 @@ import sphinx
 from docutils.parsers.rst import directives, roles
 from docutils.parsers.rst.directives import body, images, misc, parts, tables
 from sphinx.directives import code, other
+from sphinxcontrib.drawio import DrawIOFigure
+from sphinxcontrib.plantuml import UmlDirective
+from sphinx_tabs.tabs import TabsDirective
 
 # Import these only to load their domain subclasses.
 from sphinx.domains import c, cpp, python  # noqa: F401
@@ -143,6 +146,11 @@ def register() -> None:
     _add_directive("toctree", other.TocTree)
     _add_directive("versionadded", other.VersionChange, raw=False)
     _add_directive("versionchanged", other.VersionChange, raw=False)
+    _add_directive("code-block", code.CodeBlock)
+    _add_directive("drawio-figure", DrawIOFigure)
+    _add_directive("highlight", code.Highlight)
+    _add_directive("uml", UmlDirective)
+    _add_directive("tabs", TabsDirective)
 
     for d in set(_subclasses(autodoc.Documenter)):
         if d.objtype != "object":
