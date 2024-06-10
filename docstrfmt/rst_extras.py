@@ -16,6 +16,7 @@ from sphinx.directives import code, other
 from sphinxcontrib.drawio import DrawIOFigure
 from sphinxcontrib.plantuml import UmlDirective
 from sphinx_tabs.tabs import TabsDirective
+from sphinx.ext.graphviz import Graphviz
 
 # Import these only to load their domain subclasses.
 from sphinx.domains import c, cpp, python  # noqa: F401
@@ -151,6 +152,7 @@ def register() -> None:
     _add_directive("highlight", code.Highlight)
     _add_directive("uml", UmlDirective)
     _add_directive("tabs", TabsDirective)
+    _add_directive("graphviz", Graphviz)
 
     for d in set(_subclasses(autodoc.Documenter)):
         if d.objtype != "object":
